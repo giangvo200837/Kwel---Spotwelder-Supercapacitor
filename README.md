@@ -23,3 +23,7 @@ This spot welder is a small project designed for use with two or three pairs of 
 I didn't add vias at the main power line and moved the part name on the top overlay because that's not necessary when diy PCB.
 
 ![alt text](https://github.com/giangvo200837/Kwel---Spotwelder-Supercapacitor/blob/main/Pictures/IMG_2330.jpg)
+
+# Special Thanks
+Simple Circuit SSD1306 Libraly for CCS C Compiler
+https://simple-circuit.com/ssd1306-oled-ccs-c-library/
