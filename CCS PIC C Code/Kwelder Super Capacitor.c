@@ -544,41 +544,4 @@ dem2++;//restart_wdt();
 }
 }
 
- // delay_ms(1000);
- // Vcell[0] = 0;
- // Vcell[1] = 0;
- 
-  // Show image buffer on the display hardware.
-  // Since the buffer is intialized with an Adafruit splashscreen
-  // internally, this will display the splashscreen.
-//!  display();
-//!  delay_ms(1000);
 
-  // Clear the buffer.
-
-  // draw a single pixel
-  //display_drawPixel(10, 10, WHITE);
-  // Show the display buffer on the hardware.
-  // NOTE: You _must_ call display after making any drawing commands
-  // to make them visible on the display hardware!
-//!  display();
-//!  delay_ms(2000);
-//!  display_clear();
-  
-  
-
-
-//!  // text display tests
-//!  display_setTextSize(1);
-//!  display_setTextColor(WHITE);
-//!  display_setCursor(0, 0);
-//!  display_print("Hello, world!\r\n");
-//!  display_setTextColor(BLACK, WHITE); // 'inverted' text
-//!  printf(display_print, "%f\r\n", 3.141592);
-//!  display_setTextSize(2);
-//!  display_setTextColor(WHITE);
-//!  printf(display_print, "0x%LX\r\n", 0xDEADBEEF);
-//!  display();
-//!  delay_ms(2000);
-//!  display_clear();
-// end of code.
