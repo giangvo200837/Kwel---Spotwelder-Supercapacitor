@@ -9,6 +9,7 @@ This DIY supercapacitor spot welder is designed for use with two or three pairs 
 - Cell Balancing Circuit with customizable discharge resistors and mosfet DPAK package.
 - Input Voltage Range: Operates on DC 10V-20V (max).
 - OLED Display (128x64) for monitoring and adjustments.
+- Using 10 MOSFETs AUIRF8409, IRL40SC228 or any D2PAK-7Pin 
 # Two Operation Mode:
 - Auto Mode (duration by +0.5s per set).
 - Manual Mode (controlled via foot pedal or switch).
