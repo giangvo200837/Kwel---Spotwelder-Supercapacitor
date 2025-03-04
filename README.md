@@ -7,7 +7,7 @@ This spot welder is a small project designed for use with two or three pairs of 
 - Using PIC18 Microcontroller.
 - Integrated LM2596 CC 2A Charger.
 - Cell Balancing Circuit with customizable discharge resistors and mosfet DPAK package.
-- Input Voltage Range: Operates on DC 10V-20V (max).
+- Input Voltage Range: DC 10V-15V (max).
 - OLED Display (128x64) for monitoring and adjustments.
 - Using 10 MOSFETs AUIRF8409, IRL40SC228 or any D2PAK-7Pin.
 - Using Mosfet Driver MIC4424 non-inverting with 3A/Port/5MOS total 6A for all Mosfet, reduce rise time and fall time for reduce power lost and dissipation, with 10 IRL40SC228, total time charge is ~400nS.
