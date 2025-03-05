@@ -11,7 +11,7 @@ This spot welder is a small project designed for use with two or three pairs of 
 - OLED Display (128x64) for monitoring and adjustments.
 - Adjustable Pulse from 1ms to 30ms and Pulse 2 upto 50ms.
 - Using 10 MOSFETs AUIRF8409, IRL40SC228 or any D2PAK-7Pin.
-- Using Mosfet Driver MIC4424 non-inverting with 3A/Port/5MOS total 6A for all Mosfet, reduce rise time and fall time for reduce power lost and dissipation, with 10 IRL40SC228, total time charge is ~400nS.
+- Using Mosfet Driver MIC4424 non-inverting with 3A/Port/5MOS total 6A for all Mosfet, reduce rise time and fall time for reduce power loss and dissipation, with 10 IRL40SC228, total time charge is ~400nS.
 - Using max 2.5V per Cap or 5V series.
 # Two Operation Mode:
 - Auto Mode (duration by +0.5s per set).
