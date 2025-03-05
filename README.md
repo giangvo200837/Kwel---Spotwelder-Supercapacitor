@@ -18,6 +18,9 @@ This spot welder is a small project designed for use with two or three pairs of 
 - Manual Mode (controlled via foot pedal or switch).
 
    Everything is done by hand (DIY) without having to spend any processing steps, easy to do at home.
+# Youtube Overview
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/iMLx_PU4esA/0.jpg)](https://www.youtube.com/watch?v=iMLx_PU4esA)
    
 ![alt text](https://github.com/giangvo200837/Kwel---Spotwelder-Supercapacitor/blob/main/Pictures/3D.png)
 
