@@ -39,20 +39,20 @@ unsigned int8 chrgt = 0, chon = 0, dem = 0, dem_sw = 0, set_delay = 2, i = 0, a 
 //unsigned int percent0=0,bef0=64,percent1=0,bef1=0;
 //unsigned int16 vt=0;
 unsigned int16 Vcell[2];
-unsigned int8 checkblc = 240, time1 = 10, time2 = 30;
+unsigned int8 checkblc = 240, time1 = 1, time2 = 2;
 unsigned int8 percent[2] = {0,0};
-unsigned int8 before[2] = {64,128};
+unsigned int8 before[2] = {128,64};
 unsigned int16 dem2 = 65500, vcellr = 0;
 int1 lastState = 0;
 int1 currentState;
-float seconds;
+float Vtt = 0, seconds;
 void drawrect(void)
 {
    
-   display_drawRect(5, 1, 60, 20,WHITE);
-   display_drawRect(3, 8, 3, 5,WHITE);
-   display_drawRect(68, 1, 60, 20,WHITE);
-   display_drawRect(66, 8, 3, 5,WHITE);  
+   display_drawRect(7, 1, 58, 20,WHITE);
+   display_drawRect(5, 8, 3, 5,WHITE);
+   display_drawRect(70, 1, 58, 20,WHITE);
+   display_drawRect(68, 8, 3, 5,WHITE);  
 }
 
 void balancing()
@@ -108,7 +108,7 @@ int8 read_rotary(int8 counter)
                     counter--; if(counter <= 1) {counter = 1;}
                 }
             }
-           if(dem2 >= 7000)
+           if(dem2 >= 5000)
            {
             if(chon == 1) 
             {             
@@ -173,26 +173,26 @@ void read_analog(int adc_r)
    for (int z = 0; z<20; z++)
    {  
    vcellr = vcellr + read_adc();
-   delay_ms(1);
+   delay_us(100);
    }
    vcellr /= 20;
    Vcell[adc_r] = (float)(vcellr  * 5.0) / 1.023;  
-   
+   if(adc_r == 1) Vtt = Vcell[adc_r];
   // Vcell[adc_r] = 1450; // test voltage
    //return;
    }
    
 void percentages(int16 volt)
  {
- percent[a] = (-0.022*(float)volt) + (64*(a+1)-a);
+ if(volt>=2499) volt = 2499;
+ percent[a] = (-0.022*(float)volt) + (128/(a+1)-1);
  if(percent[a] < before[a])  
  { 
-   
-   
-   for(i = 64*(a+1); i > percent[a]; i--)
+    
+   for(i = 128/(a+1); i > percent[a]; i--)
    {
    display_drawLine(i,3,i,18,WHITE); 
-  if(start == 0) {display();}
+  if(start == 0) {display();} //first fill when start
    }  
  }
  
@@ -230,8 +230,8 @@ void draw_monitor(void)
    display_setCursor(100, 45);
    printf(display_print,"%1.1fS",seconds*0.5);
    }
-   display_setCursor(90, 55);
-   display_print("GIANGJ"); 
+   display_setCursor(76, 55);
+   printf(display_print,"Vp:%1.2fV",Vtt/1000); 
      //draw pulses    
    display_drawLine(1,63,20,63,WHITE);
    display_drawLine(20,63,20,55,WHITE);
@@ -256,8 +256,8 @@ void draw_monitor(void)
          
          display_setTextSize(2);
 
-         if(a == 0) display_setCursor(1, 26);
-         if(a == 1) display_setCursor(68, 26); 
+         if(a == 1) display_setCursor(1, 26);
+         if(a == 0) display_setCursor(68, 26); 
          printf(display_print,"%04lu",Vcell[a]);
          
 //!         if((Vcell[0] == 0) && (Vcell[1] == 0)) 
@@ -269,9 +269,9 @@ void draw_monitor(void)
 //!         }         
       }
       display();
-      if((Vcell[0] > 2600) || (Vcell[1] > 2600))
+      if((Vcell[0] > 2550) || (Vcell[1] > 2550))
       {
-      Vcell[0] = Vcell[1] = 0; drawrect();
+      Vcell[0] = Vcell[1] = 0; //drawrect();
       }     
       start = 1;     
 
@@ -297,6 +297,8 @@ void spotwelder_setup(void)
            
            if (chon > 4) 
            {
+           if(time1 >= 30) time1 = 30;
+           if(time2 >= 50) time2 = 50;           
            write_eeprom(LUUTRUT1,time1);
            write_eeprom(LUUTRUT2,time2);
            write_eeprom(LUUTRUC1,chedo);
@@ -373,7 +375,7 @@ void spotwelder_setup(void)
      // delay_ms(300);
     }
    // restart_wdt();
-    dem2+=1;if(dem2 > 7000) dem2 = 7000;
+    dem2+=1;//if(dem2 > 5000) dem2 = 5000;
     //delay_us(10);
 }
 
@@ -429,7 +431,7 @@ void main(void)
   // setup_wdt(WDT_OFF);
  // restart_wdt();
   //setup_wdt(WDT_288MS);
-  //SSD1306_begin(SSD1306_SWITCHCAPVCC, 0x7A); // test code
+ // SSD1306_begin(SSD1306_SWITCHCAPVCC, 0x7A); // test code
   SSD1306_begin(SSD1306_SWITCHCAPVCC, 0x78); // load code
   
   time1 = read_eeprom(LUUTRUT1); if(time1 >  99) {time1 = 3; write_eeprom(LUUTRUT1,time1);}
@@ -543,5 +545,4 @@ dem_sw = 0;
 dem2++;//restart_wdt();
 }
 }
-
 
